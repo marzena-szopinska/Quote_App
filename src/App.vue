@@ -3,6 +3,11 @@
     <new-quote v-on:newQuoteCreated="quotes.push($event)"></new-quote>
     <!-- pass the array of quotes to quote grid component, this components is responsible for rendering each quote that exists -->
     <quote-grid v-bind:quotes="quotes"></quote-grid>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="alert alert-info">Click on a Quote to delete it</div>
+      </div>
+    </div>
   </div>
 </template>
 
