@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <header-app></header-app>
     <new-quote v-on:newQuoteCreated="quotes.push($event)"></new-quote>
     <!-- pass the array of quotes to quote grid component, this components is responsible for rendering each quote that exists -->
     <quote-grid v-bind:quotes="quotes" v-on:quoteToDelete="deleteQuote"></quote-grid>
@@ -14,6 +15,7 @@
 <script>
 import QuoteGrid from "./components/QuoteGrid";
 import NewQuote from "./components/NewQuote";
+import Header from "./components/Header";
 
 export default {
   data: function() {
@@ -37,7 +39,8 @@ export default {
   components: {
     // local set up for components
     quoteGrid: QuoteGrid,
-    newQuote: NewQuote
+    newQuote: NewQuote,
+    headerApp: Header
   }
 };
 </script>
