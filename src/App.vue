@@ -2,7 +2,7 @@
   <div class="container">
     <new-quote v-on:newQuoteCreated="quotes.push($event)"></new-quote>
     <!-- pass the array of quotes to quote grid component, this components is responsible for rendering each quote that exists -->
-    <quote-grid v-bind:quotes="quotes"></quote-grid>
+    <quote-grid v-bind:quotes="quotes" v-on:quoteToDelete="deleteQuote"></quote-grid>
     <div class="row">
       <div class="col-sm-12">
         <div class="alert alert-info">Click on a Quote to delete it</div>
@@ -28,6 +28,10 @@ export default {
     newQuote(newQuote) {
       // add freshly created quote to quotes array
       this.quotes.push(newQuote);
+    },
+    deleteQuote(index) {
+      // remove element in a position specified in index
+      this.quotes.splice(index, 1);
     }
   },
   components: {

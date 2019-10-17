@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <!-- render as many quotes as there are in the array -->
-    <quote-app v-for="quote in quotes" v-bind:currentQuote="quote" :key="quote">
+    <quote-app v-for="(quote, index) in quotes" :key="quote" v-on:click.native="deleteQuote(index)">
       <!-- pass the text as slot -->
       <p>{{ quote }}</p>
     </quote-app>
@@ -17,6 +17,11 @@ export default {
   },
   components: {
     quoteApp: Quote
+  },
+  methods: {
+    deleteQuote(index) {
+      this.$emit("quoteToDelete", index);
+    }
   }
 };
 </script>
