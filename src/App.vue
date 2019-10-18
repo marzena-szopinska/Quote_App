@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <header-app></header-app>
+    <header-app v-bind:quoteCount="quotes.length" v-bind:maxQuotes="maxNumOfQuotes"></header-app>
     <new-quote v-on:newQuoteCreated="quotes.push($event)"></new-quote>
     <!-- pass the array of quotes to quote grid component, this components is responsible for rendering each quote that exists -->
     <quote-grid v-bind:quotes="quotes" v-on:quoteToDelete="deleteQuote"></quote-grid>
@@ -28,6 +28,12 @@ export default {
   }, // or instead v-on:newQuoteCreated="quotes.push($event)" you can simpy to it this way
   methods: {
     newQuote(newQuote) {
+      // show a message if the user wants to add more quotes than its allowed
+      if (this.quotes.length >= this.maxNumOfQuotes) {
+        return alert(
+          "Please delete quotes first in order to add different ones"
+        );
+      }
       // add freshly created quote to quotes array
       this.quotes.push(newQuote);
     },
