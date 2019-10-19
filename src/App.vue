@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header-app v-bind:quoteCount="quotes.length" v-bind:maxQuotes="maxNumOfQuotes"></header-app>
-    <new-quote v-on:newQuoteCreated="quotes.push($event)"></new-quote>
+    <new-quote v-on:newQuoteCreated="newQuote"></new-quote>
     <!-- pass the array of quotes to quote grid component, this components is responsible for rendering each quote that exists -->
     <quote-grid v-bind:quotes="quotes" v-on:quoteToDelete="deleteQuote"></quote-grid>
     <div class="row">
@@ -21,7 +21,7 @@ export default {
   data: function() {
     return {
       // keep track of number of quotes
-      maxNumOfQuotes: 10,
+      maxNumOfQuotes: 3,
       // array of quotes
       quotes: ["First Quote"]
     };
