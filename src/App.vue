@@ -21,7 +21,7 @@ export default {
   data: function() {
     return {
       // keep track of number of quotes
-      maxNumOfQuotes: 3,
+      maxNumOfQuotes: 10,
       // array of quotes
       quotes: ["First Quote"]
     };
